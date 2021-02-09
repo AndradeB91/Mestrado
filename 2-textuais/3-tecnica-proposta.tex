@@ -1,7 +1,7 @@
 \chapter{Técnica proposta}
 \label{chap:tecnicaproposta}
 
-Nesse capítulo é apresentada a técnica proposta de filtragem bilateral com pré-processamento. Ela visa atender principalmente modelos com ruídos que possuem qualidade de triangulação inferior e foi projetada para atender os seguintes propósitos:
+Nesse capítulo é apresentada a técnica proposta de filtragem bilateral com pré-processamento. Ela visa atender principalmente modelos com ruídos que possuem qualidade de triangulação ruim e foi projetada para atender os seguintes propósitos:
 
 \begin{itemize}  
 \item Detectar regiões com elementos de baixa qualidade que possam atrapalhar a otimização da malha e, então, gerar melhores elementos nelas;
@@ -17,13 +17,13 @@ Quanto ao terceiro ponto, embora existam técnicas mais simples e menos robustas
 
 \section{Descrição Geral}
 
-Na técnica proposta a entrada é uma malha $M$ com ruído. Uma análise será feita a procura de regiões (\textit{patches}) com qualidade de triangulação inferior. Todas essas regiões selecionadas serão apagadas da malha $M$ (gerando uma nova malha $M'$) e mantida em outra malha $M_p$, que será utilizada como base na reconstrução das regiões apagadas de $M'$. Um processo de reconstrução é implementado nas regiões apagadas da malha $M'$ (utilizando a malha $M_p$ como guia) gerando uma malha idêntica a $M$, porém com mais detalhes nas regiões reconstruídas, denominada $M_0$. Após a reconstrução, o filtro bilateral é executado $k$ vezes, produzindo uma malha final $M_k$ sem ruídos. A Figura \ref{fig:steps} mostra o fluxo geral da técnica proposta.
+Na técnica proposta a entrada é uma malha $M$ com ruído. Uma análise será feita à procura de regiões (\textit{patches}) com qualidade de triangulação ruim. Todas essas regiões selecionadas serão apagadas da malha $M$ (gerando uma nova malha $M'$) e mantida em outra malha $M_p$, que será utilizada como base na reconstrução das regiões apagadas de $M'$. Um processo de reconstrução é implementado nas regiões apagadas da malha $M'$ (utilizando a malha $M_p$ como guia) gerando uma malha idêntica a $M$, porém com mais detalhes nas regiões reconstruídas, denominada $M_0$. Após a reconstrução, o filtro bilateral é executado $k$ vezes, produzindo uma malha final $M_k$ sem ruídos. A Figura \ref{fig:steps} mostra o fluxo geral da técnica proposta.
 
 \begin{figure}[!t]
 \captionsetup{width=\linewidth}
 \centering
 \includegraphics[width=\linewidth]{figuras/steps.png}
-\caption{Fluxo geral da técnica proposta: Primeiramente é selecionado um ou mais \textit{patches} de faces de qualidade inferior; em sequência esses \textit{patches} são apagados e melhores elementos são gerados em seu lugar. Como último passo, $k$ iterações são executadas intercalando o filtro bilateral nas normais das faces e a atualização da posição dos vértices baseado nessas normais filtradas.}
+\caption{Fluxo geral da técnica proposta: Primeiramente é selecionado um ou mais \textit{patches} de faces de qualidade inferior às demais; em sequência esses \textit{patches} são apagados e melhores elementos são gerados em seu lugar. Como último passo, $k$ iterações são executadas intercalando o filtro bilateral nas normais das faces e a atualização da posição dos vértices baseado nessas normais filtradas.}
 \label{fig:steps}
 \end{figure}
 
@@ -43,7 +43,7 @@ Processos de aquisição de modelos 3D do mundo real algumas vezes não consegue
 
 \subsubsection{Seleção de \textit{patches}}
 
-Seja $M = (V,E,F)$ uma malha com ruído, onde $V$, $E$ e $F$ são os conjuntos de vértices, arestas e faces, respectivamente, de $M$. Um conjunto de faces (\textit{patches}) de $M$, que pode interferir no filtro bilateral, será então selecionado (Figura \ref{fig:validselection}) e extraído. Uma nova malha $M_p$ será então gerada contendo apenas os elementos deletados de $M$. No final deste processo (Figura \ref{fig:meshparts}) terão-se duas novas malhas: 
+Seja $M = (V,E,F)$ uma malha com ruído, onde $V$, $E$ e $F$ são os conjuntos de vértices, arestas e faces, respectivamente, de $M$. Um conjunto de faces (\textit{patches}) de $M$, que pode interferir no filtro bilateral, será então selecionado, de forma manual ou automática, (Figura \ref{fig:validselection}) e extraído. Uma nova malha $M_p$ será então gerada contendo apenas os elementos deletados de $M$. No final deste processo (Figura \ref{fig:meshparts}) terão-se duas novas malhas: 
 
 \begin{itemize}  
 \item $M_p = (V_p,E_p,F_p)$, onde $V_p \subseteq V$, $E_p \subseteq E$ e $F_p \subseteq F$.
@@ -91,13 +91,13 @@ A Figura \ref{fig:meshregeneration} mostra a visão geral do método de geraçã
 \begin{itemize}  
 \item \textit{Primeiro método:} Dada uma posição de um ponto, o método retorna o tamanho característico desejado de um triângulo equilátero ideal a ser criado com nesta posição. O tamanho do lado do triângulo é considerado como tamanho característico.
 \item \textit{Segundo método:} Dada uma aresta corrente na fronteira atual, o método localiza o ponto \textit{apex} ideal que forma um novo triângulo. O método tem dois argumentos de entrada: a altura do triângulo equilátero candidato e um vetor unitário perpendicular à direção da aresta base. 
-\item \textit{Terceiro método:} Dado um ponto no espaço, o método retorna o ponto mais próximo à superfície suporte. Este método é usado apenas no estágio final da geração de malha para melhoria da malha local.
+\item \textit{Terceiro método:} Dado um ponto no espaço, o método retorna o ponto da superfície suporte mais próximo ao ponto dado. Este método é usado apenas no estágio final da geração de malha para melhoria da malha local.
 \end{itemize}
 
 A técnica se inicializa com um processo de avanço de fronteira na região de borda definida pelo conjunto $B$ (Equação \ref{eq:boundary}) e continua até que toda a região esteja com uma malha gerada. Para cada aresta base na fronteira ativa, será criado um novo triângulo, processo esse realizado da seguinte forma:
 
 \begin{itemize}
-    \item A posição ideal para o vértice de um triângulo equilátero a ser formado é determinado usando o \textit{Primeiro} e \textit{Segundo} métodos. Usando o ponto médio da aresta base corrente como entrada, o tamanho do lado de um triângulo equilátero, a ser formado naquela posição, é retornado pelo \textit{Primeiro} método. Com este tamanho, a altura do triângulo candidato é obtida. Então fazendo o produto vetorial: \textbf{Normal} $\times$ \textbf{Tangente} é descoberto o vetor unitário perpendicular a ser utilizado no \textit{Segundo} método, que então retorna a posição ideal para o novo ponto a ser gerado. A Figura \ref{fig:meshgeneration} ilustra este processo.
+    \item A posição ideal para o vértice de um triângulo equilátero a ser formado é determinado usando o \textit{Primeiro} e \textit{Segundo} métodos. Usando o ponto médio da aresta base corrente como entrada, o tamanho do lado de um triângulo equilátero, a ser formado naquela posição, é retornado pelo \textit{Primeiro} método. Com este tamanho, a altura do triângulo candidato é obtida. Então fazendo o produto vetorial entre a normal à superfície e a aresta da fronteira, definido apenas por: \textbf{Normal} $\times$ \textbf{Tangente}, é descoberto o vetor unitário perpendicular a ser utilizado no \textit{Segundo} método, que então retorna a posição ideal para o novo ponto a ser gerado. A Figura \ref{fig:meshgeneration} ilustra este processo.
 \end{itemize}
 
 \begin{figure}[!h]
@@ -114,7 +114,6 @@ Como último passo, um processo de suavização é aplicado para aprimorar a qua
 \begin{equation} \label{eq:meshlaplacian}
     X^{n+1}_O = X^{n}_O + \phi \frac{\sum^{m}_{i=1} w_{iO}(X^{n}_i - X^{n}_O) }{\sum^{m}_{i=1} w_{iO}},
 \end{equation}
-
 onde $m$ representa a quantidade de vértices conectados ao vértice $O$, $X^{n+1}_O$ é a posição do vértice $O$ na iteração $n+1$, $w_{iO}$ é o peso atribuído entre os vértices $i$ e $O$, e $\phi$ é um parâmetro de relaxamento normalmente determinado entre $(0,1]$. Em \cite{miranda2009surface} foi observado bons resultados com $\phi = w_{iO} = 1.0$, fazendo com que apenas os vértices adjacentes influenciem o vértice $O$. Esse processo de suavização geralmente faz com que os vértices se distanciem da superfície suporte. O \textit{Terceiro} método é utilizado com o intuito de reposicionar os vértices de volta à superfície suporte. Maiores detalhes podem ser encontrados em \cite{miranda2009surface}. 
 
 Ao final deste processo de reconstrução, teremos como resultado uma malha $M_0$ com ruído, completamente pré-processada e pronta para ser utilizada no passo seguinte de remoção de ruídos do modelo.
@@ -122,7 +121,7 @@ Ao final deste processo de reconstrução, teremos como resultado uma malha $M_0
 
 \subsection{Processo de filtragem para otimização da malha}
 
-Após o pré-processamento da malha, será utilizada uma técnica de remoção de ruídos no modelo que consistirá essencialmente de dois passos:
+Após o pré-processamento da malha, será utilizada uma técnica de remoção de ruídos no modelo que consistirá essencialmente em dois passos:
 
 \begin{itemize}
     \item Aplicação da filtragem bilateral das normais das faces da malha;
@@ -203,14 +202,14 @@ Após a construção do conjunto de normais guia para toda a malha, o processo d
 \begin{equation} \label{eq:filtrobilateraldasnormais}
     \overline{n}_i = \frac{1}{W_i}\sum_{f_j \in \mathcal{N}_i}{A_j K_s(c_i,c_j)K_r(g_i,g_j) n_j},
 \end{equation}
-onde $\mathcal{N}_i$ é o conjunto de faces na vizinhança de $f_i$; $A_j$ é a área da face $f_j$; $K_s$ e $K_r$ são os \textit{kernels} espacial e de distância respectivamente; $n_j$ é a normal da face $f_j$ e $W_i = \|\sum_{f_j \in \mathcal{N}_i}{A_j K_s(c_i,c_j)K_r(g_i,g_j) n_j}\|$ é um fator de normalização para garantir que a normal filtrada será um vetor unitário. Para este trabalho, foram usadas as seguintes funções para $K_s$ e $K_r$:
+onde $\mathcal{N}_i$ é o conjunto de faces na vizinhança de $f_i$; $A_j$ é a área da face $f_j$; \textbf{$K_s$} e \textbf{$K_r$} são os \textit{kernels} espacial e de distância respectivamente; \textbf{$n_j$} é a normal da face $f_j$ e $W_i = \|\sum_{f_j \in \mathcal{N}_i}{A_j K_s(c_i,c_j)K_r(g_i,g_j) n_j}\|$ é um fator de normalização para garantir que a normal filtrada será um vetor unitário. Para este trabalho, foram usadas as seguintes funções para \textbf{$K_s$} e \textbf{$K_r$}:
 \begin{equation}
     K_s(c_i,c_j) = exp(-\frac{ {\| c_i-c_j \|}^2 }{ 2{\sigma_s}^2 }),
 \end{equation}
 \begin{equation}
     K_r(g_i,g_j) = exp(-\frac{ {\| g_i-g_j \|}^2 }{ 2{\sigma_r}^2 }),
 \end{equation}
-onde os parâmetros de variância $\sigma_s$ e $\sigma_r$ controlam a zona de influência dos \textit{kernels}. O conjunto $\mathcal{N}_i$ contém a face $f_i$ e suas faces vizinhas (Figura \ref{fig:facesvizinhas}). Elas podem ser definidas como:
+onde os parâmetros de variância \textbf{$\sigma_s$} e \textbf{$\sigma_r$} controlam a zona de influência dos \textit{kernels}. O conjunto $\mathcal{N}_i$ contém a face $f_i$ e suas faces vizinhas (Figura \ref{fig:facesvizinhas}). Elas podem ser definidas como:
 \begin{itemize}
     \item \textbf{Vizinhas imediatas:} faces que compartilham pelo menos um vértice com $f_i$.
     \item \textbf{Vizinhas próximas:} faces cujo centróide está a uma distância $r$ do centróide de $f_i$.

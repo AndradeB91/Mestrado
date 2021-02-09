@@ -1,7 +1,7 @@
 \chapter{Exemplos e resultados}
 \label{chap:exemploseresultados}
 
-Neste capítulo são apresentados os resultados de aplicação da técnica proposta nesse trabalho em alguns modelos. É mostrado a diferença da sua utilização na remoção de ruídos de um modelo. Os resultados para a técnica descrita neste trabalho são nomeados como \textit{pre-guided} e comparados com os resultados obtidos pelos trabalhos de \cite{zhang2015guided}, \cite{sun2007fast} e \cite{zheng2011bilateral}, que serão denotados como \textit{guided}, \textit{fast-and-effective} e \textit{bilateral-normal-filtering}.
+Neste capítulo são apresentados os resultados de aplicação da técnica proposta nesse trabalho em alguns modelos. É mostrada a diferença da sua utilização na remoção de ruídos de um modelo. Os resultados para a técnica descrita neste trabalho são nomeados como \textit{pre-guided} e comparados com os resultados obtidos pelos trabalhos de \cite{zhang2015guided}, \cite{sun2007fast} e \cite{zheng2011bilateral}, que serão denotados como \textit{guided}, \textit{fast-and-effective} e \textit{bilateral-normal-filtering}.
 
 A técnica descrita neste trabalho foi implementada em C++, utilizando a biblioteca de API gráfica livre \textit{modern OpenGL} (Open Graphics Library), libigl (https://github.com/libigl/libigl), GLEW, glfw e assimp.
 
@@ -9,7 +9,7 @@ O computador utilizado para a técnica foi um MacBook Air, com processador Intel
 
 \section{Modelos}
 
-Ao todo, foram utilizados 4 modelos, sendo 3 modelos com ruído artificial e regiões com triangulação de baixa qualidade e 1 modelo digitalizado do mundo real para mostrar a eficiência da técnica em problemas reais. Eles serão referidos como: \textit{block}, \textit{carter}, \textit{mechanic} e \textit{angel}. 
+Ao todo, foram utilizados 4 modelos, sendo 3 modelos com ruído artificial e regiões com triangulação de baixa qualidade e 1 modelo digitalizado do mundo real para mostrar a eficiência da técnica em problemas reais. Eles serão referidos como: \textit{block}, \textit{carter}, \textit{mechanic} e \textit{angel} (Figura \ref{fig:models}). 
 
 \begin{figure}[!h]
 \captionsetup{width=\linewidth}
@@ -23,7 +23,7 @@ Ao todo, foram utilizados 4 modelos, sendo 3 modelos com ruído artificial e reg
 \captionsetup{width=\linewidth}
 \centering 
 \includegraphics[scale=0.34]{figuras/artificialnoise.png}
-\caption{Processo de criação dos modelos de entrada. A esquerda temos os modelos \textit{ground-truth}: \textit{block}, \textit{carter} e \textit{mechanic} em duas visões diferentes. As regiões em destaque representam a zona onde a qualidade de triangulação foi propositalmente reduzida. A direita tem-se o segundo passo da criação dos modelos artificiais: a aplicação de um ruído aleatório e artificial ao longo das normais dos vértices.}
+\caption{Processo de criação dos modelos de entrada. A esquerda temos os modelos \textit{ground-truth}: \textit{block}, \textit{carter} e \textit{mechanic} em duas visões diferentes. As regiões em destaque representam a zona onde a qualidade de triangulação foi propositalmente reduzida. A direita tem-se o segundo passo da criação dos modelos artificiais: a aplicação de um ruído branco aleatório e artificial ao longo das normais dos vértices.}
 \label{fig:artificialnoise}
 \end{figure}
 
@@ -51,7 +51,7 @@ A métrica de qualidade mais comum na literatura é a \textit{distância de erro
 \begin{equation}
     MDE(X,G) = \frac{1}{n} \sum_{i=1}^{n}{\|x_i - g_i \|}, 
 \end{equation}
-onde $n$ é o número de vértices em ambas as malhas, $x_i$ é um vértice da malha resultante e $g_i$ é o mesmo vértice na malha \textit{ground-truth}. Essa métrica simplesmente calcula a distância média que cada vértice está do resultado ideal (\textit{ground-truth}). Quanto mais próximo o $MDE(X,G)$ estiver de $0$, mais eficiente será a técnica. Como a técnica proposta tem um passo de pré-processamento, em geral a malha resultante vai possuir mais vértices do que a malha \textit{ground-truth}, então essa métrica não deve ser usada diretamente, pois estaria-se ignorando informações relevantes na medida de erro.
+onde $n$ é o número de vértices em ambas as malhas, $x_i$ é um vértice da malha resultante e $g_i$ é o mesmo vértice na malha \textit{ground-truth}. Essa métrica simplesmente calcula a distância média que cada vértice está do resultado ideal (\textit{ground-truth}). Quanto mais próximo o $MDE(X,G)$ estiver de $0$, mais eficiente será a técnica. Como a técnica proposta tem um passo de pré-processamento, em geral a malha resultante vai possuir mais vértices do que a malha \textit{ground-truth}, então essa métrica não deve ser usada diretamente, pois estariam-se ignorando informações relevantes na medida de erro.
 
 Para este fim, como medida de qualidade, foi usado a técnica presente em \cite{cignoni1998metro} para estimar o erro em nosso processo de remoção de ruídos. Esta técnica faz amostragens de pontos na superfície da malha resultante e calcula a distância mínima entre esses pontos e a malha \textit{ground-truth} basedo na distância de \textit{Hausdorff}.
 
@@ -75,13 +75,13 @@ A distância de \textit{Hausdorff} $d_H(X,Y)$ é um valor que representa a dist�
 \end{equation}
 onde $g$ é o ponto na superfície da malha $G$ que produz a menor distância para $x$. Portanto $MHD(x,G)$ será o resultado da menor distância de um ponto $x$ para a malha $G$. 
 
-Estendendo este conceito para todos os pontos amostrados: seja $n_s$ o número de pontos amostrados na superfície da malha $X$, $x_i$ um ponto amostrado na superfície de $X$ e $g$ o ponto na superfície da malha $G$ que produz a menor distância para $x_i$. Será definido então a a distância de \textit{Hausdorff} modificada média (MMHD):
+Estendendo este conceito para todos os pontos amostrados: seja $n_s$ o número de pontos amostrados na superfície da malha $X$, $x_i$ um ponto amostrado na superfície de $X$ e $g$ o ponto na superfície da malha $G$ que produz a menor distância para $x_i$. Será definida então a distância de \textit{Hausdorff} modificada média (MMHD):
 \begin{equation} \label{eq:mmhd}
 	MMHD(X,G) = \frac{1}{n_s} \sum_{i=1}^{n_s}{MHD(x_i,G)},
 \end{equation}
 que conterá a média entre todos os MHD dos pontos amostrados, representando assim a média da distância que a malha resultante está da malha ideal (\textit{ground-truth}).
 
-Apesar da $MMHD$ ser uma métrica mais precisa, irá se usar também a razão entre os volumes da malha resultante e da \textit{ground-truth} para informações mais concisas e completas sobre a validez da técnica proposta. Ao todo serão usadas três métricas:
+Apesar da $MMHD$ ser uma métrica mais precisa, irá se usar também a razão entre os volumes da malha resultante e da \textit{ground-truth} para informações mais concisas e completas sobre a validez da técnica proposta. Ao todo serão usadas quatro métricas:
 
 \begin{itemize} 
     \item \textbf{MHD mínimo}: O menor valor de MHD entre todos os pontos amostrados. Esse valor representa o deslocamento mínimo de um ponto na malha resultante causado pela técnica. Valores próximos ou iguais a 0 são preferíveis.
