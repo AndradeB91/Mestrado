@@ -4,9 +4,9 @@
 Neste capítulo, são apresentados os trabalhos relacionados na área de otimização de malhas com ruídos, mostrando as vantagens e desvantagens de cada técnica apresentada. Eles podem ser divididas basicamente em duas categorias: técnicas \textit{isotrópicas} e \textit{anisotrópicas}. Métodos isotrópicos são mais simples e só consideram informações intrínsecas ao modelo, enquanto métodos anisotrópicos, dentre os quais a técnica proposta se enquadra, usam outras informações, não inerentes diretamente ao modelo, para decidir como a filtragem deve ocorrer.
 
 \section{Métodos isotrópicos}
-O mais simples, e mais eficiente, método isotrópico é a suavização \textit{Laplaciana} (Figura \ref{fig:laplacian}), que move, iterativamente, todos os vértices do modelo em direção ao centro dos seus vizinhos. Definido, para cada vértice, pela seguinte equação:
+O mais simples, e de melhor custo-benefício, método isotrópico é a suavização \textit{Laplaciana} (Figura \ref{fig:laplacian}), que move, iterativamente, todos os vértices do modelo em direção ao centro dos seus vizinhos, definindo, para cada vértice, a seguinte equação:
 \begin{equation} \label{eq:laplacian}
-    x_i = \frac{1}{N} \sum^{N}_{j=1} x_j
+    x_i = \frac{1}{N} \sum^{N}_{j=1} x_j,
 \end{equation}
 onde $N$ representa a quantidade de vértices adjacentes ao vértice de índice $i$, $x_j$ é a posição do vértice de índice $j$ adjacente ao vértice de índice $i$, e $x_i$ é a nova posição do vértice de índice $i$.
 

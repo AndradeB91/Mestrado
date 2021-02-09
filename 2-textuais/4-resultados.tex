@@ -1,7 +1,7 @@
 \chapter{Exemplos e resultados}
 \label{chap:exemploseresultados}
 
-Neste capítulo são apresentados os resultados de aplicação da técnica proposta nesse trabalho em alguns modelos. É mostrada a diferença da sua utilização na remoção de ruídos de um modelo. Os resultados para a técnica descrita neste trabalho são nomeados como \textit{pre-guided} e comparados com os resultados obtidos pelos trabalhos de \cite{zhang2015guided}, \cite{sun2007fast} e \cite{zheng2011bilateral}, que serão denotados como \textit{guided}, \textit{fast-and-effective} e \textit{bilateral-normal-filtering}.
+Neste capítulo são apresentados os resultados de aplicação da técnica proposta nesse trabalho em alguns modelos. Os resultados para a técnica descrita neste trabalho são nomeados como \textit{pre-guided} e comparados com os resultados obtidos pelos trabalhos de \cite{zhang2015guided}, \cite{sun2007fast} e \cite{zheng2011bilateral}, que serão denotados como \textit{guided}, \textit{fast-and-effective} e \textit{bilateral-normal-filtering}.
 
 A técnica descrita neste trabalho foi implementada em C++, utilizando a biblioteca de API gráfica livre \textit{modern OpenGL} (Open Graphics Library), libigl (https://github.com/libigl/libigl), GLEW, glfw e assimp.
 
@@ -94,7 +94,7 @@ Apesar da $MMHD$ ser uma métrica mais precisa, irá se usar também a razão en
 \section{Resultados}
 \label{sec:resultados}
 
-Na sequência, será comparado a técnica proposta com \cite{zhang2015guided}, \cite{sun2007fast} e \cite{zheng2011bilateral}, aplicando as quatro técnicas nos modelos de ruído sintético mostrados na Figura \ref{fig:models}, e utilizando as quatro medidas de qualidade descritas na seção \ref{metrics} para comparação. Todos os modelos foram amostrados com 6000000 de pontos na sua superfície para o cálculo do MMHD. As Figuras \ref{fig:block_final}, \ref{fig:carter_final}, \ref{fig:mechanic1_final} e \ref{fig:mechanic2_final} mostram os resultados finais das técnicas citadas aplicadas aos quatro modelos propostos, mostrando assim a comparação da técnica proposta nesse trabalho com as demais. As Figuras \ref{fig:block_hausdorff_final}, \ref{fig:carter_hausdorff_final}, \ref{fig:mechanic1_hausdorff_final} e \ref{fig:mechanic2_hausdorff_final} ilustram a visualização das distâncias de \textit{Hausdorff} dos 6 milhões de pontos amostrados, assim como um histograma de distribuição desses pontos. O modelo \textit{angel}, que possui ruído real, não possui uma malha \textit{ground-truth} de comparação, portanto usou-se a técnica proposta para mostrar que visualmente ele possui uma melhor qualidade, como é notado nas Figuras \ref{fig:angel_final} e \ref{fig:angel_detail}.
+Na sequência, será comparado a técnica proposta com \cite{zhang2015guided}, \cite{sun2007fast} e \cite{zheng2011bilateral}, aplicando as quatro técnicas nos modelos de ruído sintético mostrados na Figura \ref{fig:models}, e utilizando as quatro medidas de qualidade descritas na seção \ref{metrics} para comparação. Todos os modelos foram amostrados com 6 milhões de pontos na sua superfície para o cálculo do MMHD. As Figuras \ref{fig:block_final}, \ref{fig:carter_final}, \ref{fig:mechanic1_final} e \ref{fig:mechanic2_final} mostram os resultados finais das técnicas citadas aplicadas aos quatro modelos propostos, mostrando assim a comparação da técnica proposta nesse trabalho com as demais. As Figuras \ref{fig:block_hausdorff_final}, \ref{fig:carter_hausdorff_final}, \ref{fig:mechanic1_hausdorff_final} e \ref{fig:mechanic2_hausdorff_final} ilustram a visualização das distâncias de \textit{Hausdorff} dos 6 milhões de pontos amostrados, assim como um histograma de distribuição desses pontos. O modelo \textit{angel}, que possui ruído real, não possui uma malha \textit{ground-truth} de comparação, portanto usou-se a técnica proposta para mostrar que visualmente ele possui uma melhor qualidade, como é notado nas Figuras \ref{fig:angel_final} e \ref{fig:angel_detail}.
 
 
 
@@ -218,39 +218,39 @@ Modelo & Métrica de Erro & \cite{zhang2015guided} & \cite{sun2007fast} & \cite{
 \hline
 
 \multirow{5}{4em}{\centering \textit{Block}} 
-& Sample Points & 6000000 & 6000000 & 6000000 & 6000000\\ 
+& Sample Points & 6.000.000 & 6.000.000 & 6.000.000 & 6.000.000\\ 
 \cline{2-6}
-& MHD Mínimo & 0.0 & 0.0 & 0.0 & 0.0\\ 
+& MHD Mínimo & 0,0 & 0,0 & 0,0 & 0,0\\ 
 \cline{2-6}
-& MHD Máximo & 0.411390 & 0.380070 & 0.280138 & \textbf{0.231636}\\ 
+& MHD Máximo & 0,411390 & 0,380070 & 0,280138 & \textbf{0,231636}\\ 
 \cline{2-6}
-& \textbf{MMHD} & 0.032300 & 0.35615 & 0.033508 & \textbf{0.031509} \\ 
+& \textbf{MMHD} & 0,032300 & 0,35615 & 0,033508 & \textbf{0,031509} \\ 
 \cline{2-6}
-& Proporção de Volume & 0.997919 & 0.997511 & \textbf{0.998231} & 0.9980328\\ 
+& Proporção de Volume & 0,997919 & 0,997511 & \textbf{0,998231} & 0,9980328\\ 
 \cline{1-6}
 
 \multirow{5}{4em}{\centering \textit{Carter}} 
-& Sample Points & 6000000 & 6000000 & 6000000 & 6000000\\ 
+& Sample Points & 6.000.000 & 6.000.000 & 6.000.000 & 6.000.000\\ 
 \cline{2-6}
-& MHD Mínimo & 0.0 & 0.0 & 0.0 & 0.0\\ 
+& MHD Mínimo & 0,0 & 0,0 & 0,0 & 0,0\\ 
 \cline{2-6}
-& MHD Máximo & 0.459855 & 2.364260 & 0.459855 & \textbf{0.440874}\\ 
+& MHD Máximo & 0,459855 & 2,364260 & 0,459855 & \textbf{0,440874}\\ 
 \cline{2-6}
-& \textbf{MMHD} & 0.075780 & 0.164315 & 0.075759 & \textbf{0.075653} \\ 
+& \textbf{MMHD} & 0,075780 & 0,164315 & 0,075759 & \textbf{0,075653} \\ 
 \cline{2-6}
-& Proporção de Volume & 1.06965 & \textbf{1.06304} & 1.06965 & 1.06701\\ 
+& Proporção de Volume & 1,06965 & \textbf{1,06304} & 1,06965 & 1,06701\\ 
 \cline{1-6}
 
 \multirow{5}{4em}{\centering \textit{Mechanic}} 
-& Sample Points & 6000000 & 6000000 & 6000000 & 6000000\\ 
+& Sample Points & 6.000.000 & 6.000.000 & 6.000.000 & 6.000.000\\ 
 \cline{2-6}
-& MHD Mínimo & 0.0 & 0.0 & 0.0 & 0.0\\ 
+& MHD Mínimo & 0,0 & 0,0 & 0,0 & 0,0\\ 
 \cline{2-6}
-& MHD Máximo & 0.377783 & 1.328610 & \textbf{0.235433} & 0.250672\\ 
+& MHD Máximo & 0,377783 & 1,328610 & \textbf{0,235433} & 0,250672\\ 
 \cline{2-6}
-& \textbf{MMHD} & 0.032143 & 0.052403 & 0.033874 & \textbf{0.031893} \\ 
+& \textbf{MMHD} & 0,032143 & 0,052403 & 0,033874 & \textbf{0,031893} \\ 
 \cline{2-6}
-& Proporção de Volume & 0.995846 & 1.00102 & \textbf{0.998717} & 0.997236 \\ 
+& Proporção de Volume & 0,995846 & 1,00102 & \textbf{0,998717} & 0,997236 \\ 
 \cline{1-6}
 
 \hline
