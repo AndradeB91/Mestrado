@@ -1,7 +1,7 @@
-% Para utilizar este template siga o tutorial disponível em http://www.biblioteca.ufc.br/images/arquivos/instrucoes_modelos/tutorial_sharelatex.pdf
+% Para utilizar este template siga o tutorial disponível em http://www.biblioteca.ufc.br/wp-content/uploads/2015/09/tutorial-sharelatex.pdf
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Você dever criar uma conta no ShareLatex. Depois, %%
+%% Você deve criar uma conta no Overleaf. Depois,    %%
 %% vá nas opções no canto esquerdo superior da tela  %%
 %% e clique em "Copiar Projeto". Dê um novo nome pa- %%
 %% ra o projeto.                                     %%
@@ -9,23 +9,50 @@
 %% Os principais desenvolvedores deste template são: %%
 %%                                                   %%
 %%            Ednardo Moreira Rodrigues              %%
-%%     (Doutorando em Engenharia Elétrica - UFC)     %%
+%%       (Doutor em Engenharia Elétrica - UFC)       %%
+%%(Coord. do Grupo de Astronomia da Seara da Ciência)%%
 %%                      &                            %%
 %%            Alan Batista de Oliveira               %%
-%%     (Graduando em Engenharia Elétrica - UFC)      %%
+%%           (Engenheiro Eletricista - UFC)          %%
 %%                                                   %%
-%% Revisão:                                          %%
+%% Consultoria Bibliotecária                         %%
 %%                                                   %%
-%% - Eliene Maria Vieira de Moura;                   %%
+%%  Versão 2016 - ShareLaTeX:                        %% 
+%%                                                   %%
 %% - Francisco Edvander Pires Santos;                %%
-%% - Izabel Lima dos Santos;                         %%
 %% - Juliana Soares Lima;                            %%
-%% - Kalline Yasmin Soares Feitosa.                  %%
+%% - Izabel Lima dos Santos;                         %%
+%% - Kalline Yasmin Soares Feitosa;                  %%
+%% - Eliene Maria Vieira de Moura.                   %%
+%%                                                   %% 
+%%  Versão 2019,2020 - Overleaf:                          %%
 %%                                                   %%
-%% Colaborador:                                      %%
+%%  Biblioteca de Ciências Humanas:                  %%
+%% - Francisco Edvander Pires Santos;                %%
+%% - Juliana Soares Lima;                            %%
+%% - Eliene Maria Vieira de Moura;                   %%
+%% - Edmundo Moreira de Sousa Filho.                 %%
+%%                                                   %%
+%% Biblioteca da FEAAC:                              %%
+%% - Izabel Lima dos Santos;                         %%
+%% - Kalline Yasmin Soares Feitosa;                  %%
+%% - Kleber Lima dos Santos.                         %%
+%%                                                   %%
+%%  Biblioteca do Curso de Física:                   %%
+%% - Aline Rodrigues de Lima Mendes;                 %%
+%% - Maria de Jesus Silva dos Santos.                %%
+%%                                                   %%
+%%  Biblioteca Central do Campus do Pici:            %%
+%% - Raquel da Silva Nascimento.                     %%
+%% - Felipe Ferreira da Silva                        %%
+%%                                                   %%
+%% Colaboradores                                     %%
+%%                                                   %%
 %% -Andrei Bosco Bezerra Torres                      %% 
 %% (Professor - Sistemas e Mídias Digitais -         %%
 %% Instituto Universidade Virtual - UFC)             %%
+%% Tiago Alves Lima                                  %% 
+%% (Aluno de Mestrado em Eng. Elétrica)              %%
 %%                                                   %%
 %% Grande parte do trabalho foi adaptado do template %%
 %% da UECE elaborado por:                            %%
@@ -34,8 +61,9 @@
 %% https://github.com/thiagodnf/uecetex2             %%
 %%                                                   %%
 %% "Dúvidas, esclarecimentos ou sugestões podem ser  %%
-%% enviadas para o e-mail da Comissão de Serviços da %%
-%% Biblioteca Universitária: csbu@ufc.br."           %%
+%% enviadas para o seguinte e-mail:                  %%
+%%                                                   %%
+%%             atendimentobch@ufc.br                 %%
 %%                                                   %%
 %% As últimas atualizações estão descritas no inicio %%
 %% do arquivo "README.md".                           %%
@@ -52,23 +80,29 @@
     english,          % Hifenizacoes em ingles
     spanish,          % Hifenizacoes em espanhol
     brazil,           % Ultimo idioma eh o idioma padrao do documento
-    fleqn             % Coloca as equações alinhadas a esquerda
-]{abntex2}
+    fleqn             % Comente esta linha se quiser centralizar as equacoes. Comente também a linha 65 abaixo
+]{lib/abntex2}
 
 \input{lib/preambulo}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%          Configuracoes do ufctex                %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\mathindent}{0pt} %Complementa o alinhamento de equações para totalmente a esquerda.
 
-% Opcoes disponiveis
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                     ATENCAO                     %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Qual e o nivel do trabalho academico que voce esta 
+% escrevendo? Retire o simbolo "%" apenas de um dos 
+% quatro topicos abaixo refente ao nível do seu traba
+% -lho.
 
 % \trabalhoacademico{tccgraduacao}
 %\trabalhoacademico{tccespecializacao}
 \trabalhoacademico{dissertacao}
 %\trabalhoacademico{tese}
 
-% Define se o trabalho eh uma qualificacao
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Define se o trabalho e uma qualificacao
 % Coloque 'nao' para versao final do trabalho
 
 \ehqualificacao{nao}
@@ -83,28 +117,38 @@
 \cordohyperlink{nao}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%          Informação sobre a IES                 %%
+%%         Informacao sobre a instituicao          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ies{Universidade Federal do Ceará}
 \iessigla{UFC}
 \centro{Centro de Ciências}
+\departamento{Departamento de Computação}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%        Informação para TCC de Graduacao %%
+%%        Informacao para TCC de Graduacao         %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \graduacaoem{Engenharia Xxxxxxx}
-\habilitacao{bacharel} % Pode colocar tambem 'licenciada'
+\habilitacao{bacharel} % Ou licenciado(a)
+
+% AVISO: Caso necessario alterar o texto de apresenta-
+% cao da Especializacao, ir a pasta "lib", arquivo 
+% "ufctex.sty" na linha 502.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%     Informação para TCC de Especializacao       %%
+%%     Informacao para TCC de Especializacao       %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \especializacaoem{Yyyyyyyyy}
 
+% AVISO: Caso necessario alterar o texto de apresenta-
+% cao da Especializacao, ir a pasta "lib", arquivo 
+% "ufctex.sty" na linha 507.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%         Informação para Dissertacao             %%
+%%         Informacao para Dissertacao             %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \programamestrado{Programa de Pós-Graduação em Ciência da Computação}
@@ -112,6 +156,9 @@
 \mestreem{Ciência da Computação}
 \areadeconcentracaomestrado{Computação Gráfica}
 
+% AVISO: Caso necessario alterar o texto de apresenta-
+% cao da dissertacao, ir a pasta "lib", arquivo 
+% "ufctex.sty" na linha 511.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%               Informação para Tese              %%
@@ -122,30 +169,35 @@
 \doutorem{Engenharia Xxxxxx}
 \areadeconcentracaodoutorado{Engenharia Xxxxxxx}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Informacoes relacionadas ao trabalho     %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AVISO: Caso necessario alterar o texto de apresenta-
+% cao da tese, ir a pasta "lib", arquivo "ufctex.sty" 
+% na linha 515.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%      Informacoes relacionadas ao trabalho       %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \autor{Lucas Andrade Benevides}
 \titulo{Uma Técnica de Otimização de Malhas com Ruídos por Filtragem Bilateral com pré-processamento}
-\data{2020}
+\data{2017}
 \local{Fortaleza}
 
 % Exemplo: \dataaprovacao{01 de Janeiro de 2012}
-\dataaprovacao{}
+\dataaprovacao{29 de Novembro de 2017}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%     Informação sobre o Orientador       %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%           Informação sobre o Orientador         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \orientador{Prof. Dr. Joaquim Bento Cavalcante Neto}
 \orientadories{Universidade Federal do Ceará (UFC)}
 \orientadorcentro{Centro de Ciências (CC)}
 \orientadorfeminino{nao} % Coloque 'sim' se for do sexo feminino
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%      Informação sobre o Co-orientador   %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%          Informação sobre o Coorientador        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Deixe o nome do coorientador em branco para remover do documento
 
@@ -154,17 +206,15 @@
 \coorientadorcentro{Centro de Ciências (CC)}
 \coorientadorfeminino{nao} % Coloque 'sim' se for do sexo feminino
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%      Informação sobre a banca           %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%              Informação sobre a banca           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Atenção! Deixe em branco o nome do membro da banca para remover da folha de aprovacao
 
 % Exemplo de uso:
 % \membrodabancadois{Prof. Dr. Fulano de Tal}
 % \membrodabancadoisies{Universidade Federal do Ceará - UFC}
-
 
 \membrodabancadois{Prof\textordfeminine. Dr\textordfeminine. Emanuele Marques dos Santos}
 \membrodabancadoiscentro{Centro de Ciências (CC)}
@@ -174,6 +224,13 @@
 \membrodabancatrescentro{Centro de Tecnologia (CT)}
 \membrodabancatresies{Universidade Federal do Ceará (UFC)}
 
+
+% \membrodabancadois{Prof. Dr. Xxxxxxx Xxxxxx Xxxxxxx}
+% \membrodabancadoiscentro{Faculdade de Filosofia Dom Aureliano Matos (FAFIDAM)}
+% \membrodabancadoisies{Universidade do Membro da Banca Dois (SIGLA)}
+% \membrodabancatres{Prof. Dr. Xxxxxxx Xxxxxx Xxxxxxx}
+% \membrodabancatrescentro{Centro de Ciências e Tecnologia (CCT)}
+% \membrodabancatresies{Universidade do Membro da Banca Três (SIGLA)}
 % \membrodabancaquatro{Prof. Dr. Xxxxxxx Xxxxxx Xxxxxxx}
 % \membrodabancaquatrocentro{Centro de Ciências e Tecnologia (CCT)}
 % \membrodabancaquatroies{Universidade do Membro da Banca Quatro (SIGLA)}
@@ -189,21 +246,20 @@
 	% Elementos pré-textuais
 	\imprimircapa
 	\imprimirfolhaderosto{}
-% 	\imprimirfichacatalografica{1-pre-textuais/ficha-catalografica}
-	%\imprimirerrata{elementos-pre-textuais/errata}
+	\imprimirfichacatalografica{1-pre-textuais/ficha-catalografica}
 	\imprimirfolhadeaprovacao
 
 	\imprimiragradecimentos{1-pre-textuais/agradecimentos}
-	\imprimirepigrafe{1-pre-textuais/epigrafe}
 	\imprimirresumo{1-pre-textuais/resumo}
 	\imprimirabstract{1-pre-textuais/abstract}
+	\renewcommand*\listfigurename{Lista de Figuras} %Se você comentar esta linha o título da lista fica: LISTA DE ILUSTRAÇÕES
 	\imprimirlistadeilustracoes
 	\imprimirlistadetabelas
 	%\imprimirlistadequadros
-	\imprimirlistadealgoritmos
+	%\imprimirlistadealgoritmos
 	%\imprimirlistadecodigosfonte
-% 	\imprimirlistadeabreviaturasesiglas
-% 	\imprimirlistadesimbolos{1-pre-textuais/lista-de-simbolos}   
+	% \imprimirlistadeabreviaturasesiglas
+	% \imprimirlistadesimbolos{1-pre-textuais/lista-de-simbolos}   
 	\imprimirsumario
 	
 	\setcounter{table}{0}% Deixe este comando antes da primeira tabela.
@@ -219,16 +275,18 @@
 	%Elementos pós-textuais	
 	\bibliography{3-pos-textuais/referencias}
 %	\imprimirglossario	
-% 	\imprimirapendices
-% 		% Adicione aqui os apendices do seu trabalho
-% 		\input{3-pos-textuais/apendices/apendice-a}
-% 		\input{3-pos-textuais/apendices/apendice-b}
-% 		\input{3-pos-textuais/apendices/apendice-c}
-% 		\input{3-pos-textuais/apendices/apendice-d}
-% 	\imprimiranexos
-% 		% Adicione aqui os anexos do seu trabalho
-% 		\input{3-pos-textuais/anexos/anexo-a}
-% 		\input{3-pos-textuais/anexos/anexo-b}		
-% 	\imprimirindice
+	% \imprimirapendices
+	% 	% Adicione aqui os apendices do seu trabalho
+	% 	\input{3-pos-textuais/apendices/apendice-a}
+	% 	\input{3-pos-textuais/apendices/apendice-b}
+	% 	\input{3-pos-textuais/apendices/apendice-c}
+	% 	\input{3-pos-textuais/apendices/apendice-d}
+	% \imprimiranexos
+	% 	% Adicione aqui os anexos do seu trabalho
+	% 	\input{3-pos-textuais/anexos/anexo-a}
+	% 	\input{3-pos-textuais/anexos/anexo-b}		
+    %\imprimirindice
+    
+	
 
 \end{document}

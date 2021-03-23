@@ -1,8 +1,7 @@
-
-% Para utilizar este template siga o tutorial disponível em http://www.biblioteca.ufc.br/images/arquivos/instrucoes_modelos/tutorial_sharelatex.pdf
+% Para utilizar este template siga o tutorial disponível em http://www.biblioteca.ufc.br/wp-content/uploads/2015/09/tutorial-sharelatex.pdf
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Você dever criar uma conta no ShareLatex. Depois, %%
+%% Você deve criar uma conta no Overleaf. Depois,    %%
 %% vá nas opções no canto esquerdo superior da tela  %%
 %% e clique em "Copiar Projeto". Dê um novo nome pa- %%
 %% ra o projeto.                                     %%
@@ -10,23 +9,50 @@
 %% Os principais desenvolvedores deste template são: %%
 %%                                                   %%
 %%            Ednardo Moreira Rodrigues              %%
-%%     (Doutorando em Engenharia Elétrica - UFC)     %%
+%%       (Doutor em Engenharia Elétrica - UFC)       %%
+%%(Coord. do Grupo de Astronomia da Seara da Ciência)%%
 %%                      &                            %%
 %%            Alan Batista de Oliveira               %%
-%%     (Graduando em Engenharia Elétrica - UFC)      %%
+%%           (Engenheiro Eletricista - UFC)          %%
 %%                                                   %%
-%% Revisão:                                          %%
+%% Consultoria Bibliotecária                         %%
 %%                                                   %%
-%% - Eliene Maria Vieira de Moura;                   %%
+%%  Versão 2016 - ShareLaTeX:                        %% 
+%%                                                   %%
 %% - Francisco Edvander Pires Santos;                %%
-%% - Izabel Lima dos Santos;                         %%
 %% - Juliana Soares Lima;                            %%
-%% - Kalline Yasmin Soares Feitosa.                  %%
+%% - Izabel Lima dos Santos;                         %%
+%% - Kalline Yasmin Soares Feitosa;                  %%
+%% - Eliene Maria Vieira de Moura.                   %%
+%%                                                   %% 
+%%  Versão 2019 - Overleaf:                          %%
 %%                                                   %%
-%% Colaborador:                                      %%
+%%  Biblioteca de Ciências Humanas:                  %%
+%% - Francisco Edvander Pires Santos;                %%
+%% - Juliana Soares Lima;                            %%
+%% - Eliene Maria Vieira de Moura;                   %%
+%% - Edmundo Moreira de Sousa Filho.                 %%
+%%                                                   %%
+%% Biblioteca da FEAAC:                              %%
+%% - Izabel Lima dos Santos;                         %%
+%% - Kalline Yasmin Soares Feitosa;                  %%
+%% - Kleber Lima dos Santos.                         %%
+%%                                                   %%
+%%  Biblioteca do Curso de Física:                   %%
+%% - Aline Rodrigues de Lima Mendes;                 %%
+%% - Maria de Jesus Silva dos Santos.                %%
+%%                                                   %%
+%%  Biblioteca Central do Campus do Pici:            %%
+%% - Raquel da Silva Nascimento.                     %%
+%% - Felipe Ferreira da Silva                        %%
+%%                                                   %%
+%% Colaboradores                                     %%
+%%                                                   %%
 %% -Andrei Bosco Bezerra Torres                      %% 
 %% (Professor - Sistemas e Mídias Digitais -         %%
 %% Instituto Universidade Virtual - UFC)             %%
+%% Tiago Alves Lima                                  %% 
+%% (Aluno de Mestrado em Eng. Elétrica)              %%
 %%                                                   %%
 %% Grande parte do trabalho foi adaptado do template %%
 %% da UECE elaborado por:                            %%
@@ -35,9 +61,12 @@
 %% https://github.com/thiagodnf/uecetex2             %%
 %%                                                   %%
 %% "Dúvidas, esclarecimentos ou sugestões podem ser  %%
-%% enviadas para o e-mail da Comissão de Serviços da %%
-%% Biblioteca Universitária: csbu@ufc.br."           %%
+%% enviadas para o seguinte e-mail:                  %%
 %%                                                   %%
+%%             atendimentobch@ufc.br                 %%
+%%                                                   %%
+%% As últimas atualizações estão descritas no inicio %%
+%% do arquivo "README.md".                           %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                   %%
 %% This work may be distributed and/or modified under%%
@@ -52,7 +81,6 @@
 %% are available on http://abntex2.googlecode.com/   %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 %\usepackage[showframe, pass]{geometry} % Se voce quer ver as margens do documento no PDF, descomente essa linha
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -60,8 +88,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Importa o arquivo com as entradas do glassario
-\input{1-pre-textuais/lista-de-abreviaturas-e-siglas}
-\input{3-pos-textuais/glossario}
+% \input{1-pre-textuais/lista-de-abreviaturas-e-siglas}
+% \input{3-pos-textuais/glossario}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,7 +200,7 @@
 \setlength{\intextsep}{18pt plus 2pt minus 2pt}
 
 \newcommand{\Caption}[1]{ %
-	\begin{Spacing}{1.} %
+	\begin{Spacing}{1.} % Altera o espacamento apos a o caption
        	\caption{#1} %
    	\end{Spacing} %
 }
@@ -497,21 +525,20 @@
 %%       Definições de Variaveis       %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\preambulotese}{
-	Tese apresentada ao Curso de \imprimirdoutorado\ do \imprimirprogramadoutorado\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção do título de doutor em \imprimirdoutorem. Área de Concentração: \imprimirareadeconcentracaodoutorado \\
-}
-
-\newcommand{\preambulodissertacao}{
-	Dissertação apresentada ao Curso de \imprimirmestrado\ do \imprimirprogramamestrado\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção do título de mestre em \imprimirmestreem. Área de Concentração: \imprimirareadeconcentracaomestrado \\
-}
-
 \newcommand{\preambulotccgraduacao}{
 	Trabalho de Conclusão de Curso apresentado ao Curso de Graduação em \imprimirgraduacaoem\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção do grau de \imprimirhabilitacao\ em \imprimirgraduacaoem. \\
 }
 
 \newcommand{\preambulotccespecializacao}{
 	Trabalho de Conclusão de Curso apresentado ao Curso de Especialização em \imprimirespecializacaoem\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção da certificação de especialista em \imprimirespecializacaoem. \\
-%Trabalho de Conclusao de Curso apresentado ao Curso de Graduacao em \imprimirgraduacaoem\ do \imprimircentro\ da \imprimiries, como requisito parcial a obtencao do grau de \imprimirhabilitacao\ em \imprimirgraduacaoem. \\
+}
+
+\newcommand{\preambulodissertacao}{
+	Dissertação apresentada ao Curso de \imprimirmestrado\ do \imprimirprogramamestrado\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção do título de mestre em \imprimirmestreem. Área de Concentração: \imprimirareadeconcentracaomestrado \\
+}
+
+\newcommand{\preambulotese}{
+	Tese apresentada ao \imprimirprogramadoutorado\ do \imprimircentro\ da \imprimiries, como requisito parcial à obtenção do título de doutor em \imprimirdoutorem. Área de Concentração: \imprimirareadeconcentracaodoutorado \\
 }
 
 \preambulo{
@@ -586,7 +613,7 @@
 		\abntex@ifnotempty{\imprimirprogramamestrado}{
 			\MakeUppercase{\imprimirprogramamestrado} \\
 		}		
-		\MakeUppercase{\imprimirmestrado} \\
+		% \MakeUppercase{\imprimirmestrado} \\
 
 		\vspace{\onelineskip}
 		
@@ -1029,7 +1056,7 @@
 
 \newcommand{\palavraschave}[1]{ %
 	\vspace{\onelineskip} 
-	\noindent \textbf{Palavras-chave:} #1%
+	\noindent \textbf{Palavras-chave}: #1%
 	\hypersetup{%
 		pdfborder = {0 0 0}
 	}
@@ -1037,7 +1064,7 @@
 
 \newcommand{\keywords}[1]{ %
 	\vspace{\onelineskip} 
-	\noindent \textbf{Keywords:} #1%
+	\noindent \textbf{Keywords}: #1%
 }
 
 \newcommand{\imprimirresumo}[1]{ %
@@ -1211,7 +1238,7 @@
 \setlength{\glsdescwidth}{\linewidth}
 
 \newcommand{\imprimirlistadeabreviaturasesiglas}{ %
-	\printglossary[type=\acronymtype,style=long,nonumberlist,title={Lista de Abreviaturas e Siglas\vspace{-0.3cm}}] %
+	\printglossary[type=\acronymtype,style=long,nonumberlist,title={Lista de Abreviaturas e Siglas\vspace{0cm}}] %
 	\pagebreak %
 }
 
@@ -1272,7 +1299,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Define o titulo no sumario do Apendice para nao negrito
-\newcommand{\apendice}[1]{\chapter{\normalfont{#1}}}
+\newcommand{\apendice}[1]{\chapter{\hspace{-8pt}\uppercase{#1}}}
 
 % O nome "APÊNDICES" nao deve vir em pagina distinta, redigido em letras maiusculas, centralizado, negritado, tamanho da fonte 12.
 \newcommand{\imprimirpaginaapendices}{ %
@@ -1286,11 +1313,11 @@
 
 % Altera a fonte da letra titulo do apendice nao negrito
 \renewcommand{\chaptitlefont}{ %
-	\ifthenelse{\boolean{abntex@apendiceousecao}}{ %
-		\bfseries%\normalsize %
-	}{%
-		\ABNTEXchapterfont\ABNTEXchapterfontsize %
-	}%
+	\ifthenelse{\boolean{abntex@apendiceousecao}}{
+		\bfseries%\normalsize
+	}{
+		\ABNTEXchapterfont\ABNTEXchapterfontsize
+	}
 }
 
 % Retira o negrito do apêndice e o coloca alinhado a esquerda
@@ -1370,9 +1397,8 @@
 %%                Anexos               %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 % Define o titulo no sumario do Anexo para nao negrito
-\newcommand{\anexo}[1]{\chapter{\normalfont{#1}}}
+\newcommand{\anexo}[1]{\chapter{\hspace{-8pt}\uppercase{#1}}}
 
 % O nome ANEXOS nao deve vir em pagina distinta, redigido em letras maiusculas, centralizado, negritado, tamanho da fonte 12.
 \newcommand{\imprimirpaginaanexo}{ %
@@ -1399,6 +1425,7 @@
 \newcommand{\imprimirindice}{ %
 	\printindex
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%        Configuracao do Sumario      %%
