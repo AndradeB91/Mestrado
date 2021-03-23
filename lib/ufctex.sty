@@ -599,6 +599,7 @@
 }
 
 \newcommand{\imprimircapadissertacao}{%
+	\setcounter{page}{1}
 	\begin{capa}%
 		% Todos os elementos da capa devem esta centralizado
 		\center
@@ -632,6 +633,7 @@
 }
 
 \newcommand{\imprimircapatcc}[1]{%
+	\setcounter{page}{1}
 	\begin{capa}%
 		% Todos os elementos da capa devem esta centralizado
 		\center
@@ -663,7 +665,7 @@
 
 \renewcommand{\imprimircapa}{%
 	% Toda capa deve ter pagina 0
-	\setcounter{page}{0}
+	\setcounter{page}{1}
 	\ifthenelse{\boolean{ufctex@ehdissertacao}}{ %
 			\imprimircapadissertacao %	
 	}{
@@ -685,6 +687,7 @@
 
 \makeatletter
 \renewcommand{\folhaderostocontent}{
+	\setcounter{page}{1}
 	\begin{center}
 		\normalsize\MakeUppercase\imprimirautor\par
 		\vspace{4.0cm}\par
@@ -735,6 +738,8 @@
 	
 	% Espaço entre uma assintura e outra
 	\setlength{\ABNTEXsignskip}{18pt}
+
+	\setcounter{page}{1}
 
 	\begin{center}
 		\MakeUppercase{\imprimirautor}\par
@@ -795,7 +800,7 @@
 }
 
 \newcommand{\imprimirfolhadeaprovacaodissertacao}{
-
+	\setcounter{page}{1}
 	\begin{center}
 		\MakeUppercase{\imprimirautor}\par
 		\vspace{\onelineskip}
@@ -1047,6 +1052,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\imprimirfichacatalografica}[1]{
+	\setcounter{page}{1}
 	\includepdf[pages=1]{#1} %
 }
 
